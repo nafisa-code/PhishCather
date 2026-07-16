@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishCatcher | Intelligent Email Threat Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="bg-blur blur-one"></div>
+<div class="bg-blur blur-two"></div>
+<nav class="navbar navbar-expand-lg">
+<div class="container">
+<a class="navbar-brand" href="#">
+<i class="fa-solid fa-shield-halved"></i>
+<span>PhishCatcher</span>
+</a>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item">
+<a class="nav-link active" href="{{ url_for('home') }}">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link active" href="{{ url_for('login') }}">Login</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{ url_for('history') }}">History</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{ url_for('about') }}">About</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="hero">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-6">
+<p class="hero-tag">
+EMAIL SECURITY PLATFORM
+</p>
+<h1>
+Detect Phishing
+<br>
+Before It Reaches
+Your Users.
+</h1>
+<p class="hero-description">
+Analyze suspicious emails, inspect authentication records,
+detect malicious URLs, calculate phishing risk,
+and generate professional incident response reports.
+</p>
+<div class="hero-buttons">
+<a href="/upload" class="primary-btn">
+<i class="fa-solid fa-upload"></i>
+Analyze Email
+</a>
+<a href="{{url_for('dashboard')}}" class="secondary-btn">
+<i class="fa-solid fa-play"></i>
+Live Preview
+</a>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="hero-card">
+<div class="scan-line"></div>
+<h3>Threat Overview</h3>
+<div class="status">
+<span>Threat Level</span>
+<h2>{{latest_threat}}</h2>
+</div>
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+<div class="stats">
+<div>
+<h4>{{total_emails}}</h4>
+<p>Emails Scanned</p>
+</div>
+<div>
+<h4>{{high}}</h4>
+<p>High Threats</p>
+</div>
+<div>
+<h4>{{medium}}</h4>
+<p>Medium Threats</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="features">
+<div class="container">
+<h2 class="section-title">
+Powerful Security Features
+</h2>
+<div class="row">
+<div class="col-md-4">
+<div class="feature-card">
+<i class="fa-solid fa-envelope-open-text"></i>
+<h3>Email Parsing</h3>
+<p>
+Extract sender information,
+headers and metadata.
+</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="feature-card">
+<i class="fa-solid fa-shield-virus"></i>
+<h3>Authentication</h3>
+<p>
+Verify SPF, DKIM and DMARC.
+</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="feature-card">
+<i class="fa-solid fa-link"></i>
+<h3>URL Analysis</h3>
+<p>
+Identify malicious and suspicious links.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="dashboard-preview">
+    <div class="container">
+        <h2 class="section-title">
+            Security Dashboard Preview
+        </h2>
+        <div class="dashboard-glass">
+            <div class="dashboard-top">
+                <h3>Threat Intelligence Dashboard</h3>
+                <span class="live-status">
+                    ● LIVE
+                </span>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-box">
+                    <h4>{{total_emails}}</h4>
+                    <p>Emails Scanned</p>
+                </div>
+                <div class="dashboard-box">
+                    <h4>{{high}}</h4>
+                    <p>High Threats</p>
+                </div>
+                <div class="dashboard-box">
+                    <h4>{{medium}}</h4>
+                    <p>Suspicious URLs</p>
+                </div>
+                <div class="dashboard-box">
+                    <h4>{{low}}</h4>
+                    <p>Detection Accuracy</p>
+                </div>
+            </div>
+            <div class="fake-chart">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+                <div class="bar bar4"></div>
+                <div class="bar bar5"></div>
+                <div class="bar bar6"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+<p>
+© 2026 PhishCatcher • Built with Flask & Python
+</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
