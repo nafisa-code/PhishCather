@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Email</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<nav style="padding:20px; text-align:right;">
+<a href="{{ url_for('dashboard') }}">Dashboard</a> |
+<a href="{{ url_for('history') }}">History</a> |
+<a href="{{ url_for('about') }}">About</a> |
+<a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+<section class="hero">
+    <div class="container">
+        <div class="hero-card text-center">
+            <h1>📧 Upload Email (.eml)</h1>
+            <p class="hero-description">
+                Upload a suspicious email and let PhishCatcher analyze its
+                headers, sender information and URLs.
+            </p>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input
+                    type="file"
+                    name="email"
+                    accept=".eml"
+                    class="form-control"
+                    required>
+                <br><br>
+                <button type="submit" class="primary-btn">
+                    Analyze Email
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

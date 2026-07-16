@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan History</title>
+    <style>
+        body{
+            margin:0;
+            background:#0f172a;
+            color:white;
+            font-family:Arial,Helvetica,sans-serif;
+        }
+        .container{
+            width:90%;
+            margin:40px auto;
+        }
+        h1{
+            text-align:center;
+            color:#38bdf8;
+            margin-bottom:30px;
+        }
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:#1e293b;
+            border-radius:10px;
+            overflow:hidden;
+        }
+        th{
+            background:#0ea5e9;
+            color:white;
+            padding:14px;
+            font-size:15px;
+        }
+        td{
+            padding:12px;
+            border-bottom:1px solid #334155;
+            text-align:center;
+        }
+        tr:hover{
+            background:#334155;
+        }
+        .low{
+            color:#22c55e;
+            font-weight:bold;
+        }
+        .medium{
+            color:#facc15;
+            font-weight:bold;
+        }
+        .high{
+            color:#ef4444;
+            font-weight:bold;
+        }
+        .btn{
+            display:inline-block;
+            margin-top:25px;
+            padding:12px 22px;
+            background:#06b6d4;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            font-weight:bold;
+        }
+        .btn:hover{
+            background:#0891b2;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>📊 Scan History</h1>
+<table>
+<tr>
+<th>ID</th>
+<th>Sender</th>
+<th>Receiver</th>
+<th>Subject</th>
+<th>Date</th>
+<th>Threat Level</th>
+<th>Score</th>
+</tr>
+{% for scan in scans %}
+<tr>
+<td>{{ scan[0] }}</td>
+<td>{{ scan[1] }}</td>
+<td>{{ scan[2] }}</td>
+<td>{{ scan[3] }}</td>
+<td>{{ scan[4] }}</td>
+<td>
+{% if scan[5]=="HIGH" %}
+<span class="high">{{ scan[5] }}</span>
+{% elif scan[5]=="MEDIUM" %}
+<span class="medium">{{ scan[5] }}</span>
+{% else %}
+<span class="low">{{ scan[5] }}</span>
+{% endif %}
+</td>
+<td>{{ scan[6] }}</td>
+</tr>
+{% endfor %}
+</table>
+<div style="margin-top:20px;">
+
+    <a href="{{ url_for('dashboard') }}" class="btn">
+        📊 Dashboard
+    </a>
+
+    <a href="{{ url_for('export_csv') }}" class="btn" style="margin-left:15px;">
+        📥 Export CSV
+    </a>
+
+    <a href="{{ url_for('export_pdf') }}" class="btn" style="margin-left:15px;">
+        📄 Export PDF
+    </a>
+
+    <a href="{{ url_for('logout') }}" class="btn" style="margin-left:15px; background:#dc2626;">
+        🚪 Logout
+    </a>
+</div>
+</div>
+</body>
+</html>
